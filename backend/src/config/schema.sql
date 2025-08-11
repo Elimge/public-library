@@ -1,15 +1,23 @@
 -- /backend/src/config/schema.sql
+-- Description: Initializes the database schema for the Library Management System
 
--- Remove the db if exists
+-- --------------------------------------
+-- Drop and recreate the database
+-- --------------------------------------
+
+-- Delete the database if it exists to start fresh
 DROP DATABASE IF EXISTS library_db; 
 
--- Create the database
+-- Create a new database
 CREATE DATABASE library_db;
 
--- Select the db to use it
+-- Select the new database for use
 USE library_db;
 
--- Tables creation
+-- --------------------------------------
+-- Table: users
+-- Stores user information
+-- --------------------------------------
 CREATE TABLE users (
     id_user INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
@@ -18,6 +26,10 @@ CREATE TABLE users (
     phone VARCHAR(25)
 );
 
+-- --------------------------------------
+-- Table: books
+-- Stores book metadata
+-- --------------------------------------
 CREATE TABLE books (
     isbn VARCHAR(150) PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -25,6 +37,10 @@ CREATE TABLE books (
     release_year INT
 );
 
+-- --------------------------------------
+-- Table: loans
+-- Tracks which books are loaned to which users
+-- --------------------------------------
 CREATE TABLE loans (
     id_loan INT PRIMARY KEY AUTO_INCREMENT,
     id_user INT NOT NULL,
@@ -35,6 +51,3 @@ CREATE TABLE loans (
     CONSTRAINT fk_loans_users FOREIGN KEY (id_user) REFERENCES users(id_user),
     CONSTRAINT fk_loans_books FOREIGN KEY (isbn) REFERENCES books(isbn)
 );
-
-
-
