@@ -1,4 +1,4 @@
-// backend/src/routes/prestamo.routes.js.
+// backend/src/routes/loan.routes.js.
 
 // Import the Express Router and the loan controller.
 const { Router } = require("express");

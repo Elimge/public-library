@@ -1,4 +1,4 @@
-// backend/src/controllers/prestamo.controller.js
+// backend/src/controllers/loan.controller.js
 
 const loanService = require("../services/loan.service.js");
 
